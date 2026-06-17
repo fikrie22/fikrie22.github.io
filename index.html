@@ -102,12 +102,22 @@
             border-radius: 2px;
         }
 
+        /* Hero / Home */
         #home {
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-height: 100vh;
             padding-top: 2rem;
+        }
+
+        .hero-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero-badge {
@@ -117,22 +127,61 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            display: inline-block;
-            width: fit-content;
-            margin-bottom: 1.5rem;
             border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* FITUR 1: Status Server Live Palsu */
+        .server-status-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; box-shadow: 0 0 12px #22c55e; }
+            100% { opacity: 0.4; }
         }
 
         #home h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        #home h2 {
+        /* FITUR 2: Animasi Mengetik */
+        .typing-container {
             font-size: 1.8rem;
             color: var(--accent-teal);
             font-weight: 600;
             margin-bottom: 1.5rem;
+            height: 2.7rem;
+        }
+
+        .typed-text {
+            border-right: 3px solid var(--accent-blue);
+            padding-right: 5px;
+            animation: cursor-blink 0.75s step-end infinite;
+        }
+
+        @keyframes cursor-blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-blue); }
         }
 
         .summary {
@@ -180,6 +229,7 @@
             border-color: var(--text-muted);
         }
 
+        /* Timeline Pengalaman */
         .timeline {
             position: relative;
             border-left: 2px solid var(--border);
@@ -238,6 +288,7 @@
             color: var(--accent-blue);
         }
 
+        /* Tabel Keahlian */
         .skills-container {
             width: 100%;
             overflow-x: auto;
@@ -282,6 +333,7 @@
             border: 1px solid rgba(45, 212, 191, 0.2);
         }
 
+        /* Grid Pendidikan & Informasi Tambahan */
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -342,6 +394,7 @@
             font-weight: bold;
         }
 
+        /* Kontak */
         .contact-container {
             background: linear-gradient(135deg, var(--bg-card), #111827);
             border: 1px solid var(--border);
@@ -373,12 +426,51 @@
             border-radius: 6px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
         }
 
         .contact-item:hover {
             border-color: var(--accent-teal);
             background-color: rgba(45, 212, 191, 0.05);
             transform: translateY(-2px);
+        }
+
+        /* FITUR 3: Tombol Copy Instan */
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 5px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .tooltip-alert {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2dd4bf;
+            color: #0f172a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .tooltip-alert.show {
+            opacity: 1;
         }
 
         footer {
@@ -392,7 +484,7 @@
 
         @media (max-width: 768px) {
             #home h1 { font-size: 2.5rem; }
-            #home h2 { font-size: 1.4rem; }
+            .typing-container { font-size: 1.3rem; height: 2rem; }
             .company-date { flex-direction: column; gap: 0.3rem; }
             .info-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
@@ -405,7 +497,6 @@
 </head>
 <body>
 
-    <!-- Navigasi -->
     <nav>
         <div class="nav-container">
             <div class="logo">FIKRI ILHAMI</div>
@@ -419,11 +510,22 @@
         </div>
     </nav>
 
-    <!-- Bagian Beranda (Hero) -->
     <section id="home">
-        <div class="hero-badge">IT Infrastructure & Enterprise Operations</div>
+        <div class="hero-header-container">
+            <div class="hero-badge">IT Infrastructure & Enterprise Operations</div>
+            <!-- Implementasi Visual Status Live Data Center -->
+            <div class="server-status-card">
+                <span class="status-dot"></span>
+                <span>Portfolio Node Status: <strong>ONLINE</strong> (Uptime 99.9%)</span>
+            </div>
+        </div>
         <h1>Fikri Ilhami Syah Putra</h1>
-        <h2>IT Infrastructure & Network Specialist</h2>
+        
+        <!-- Implementasi Animasi Mengetik Peran Profesional -->
+        <div class="typing-container">
+            <span class="typed-text" id="roles-text"></span>
+        </div>
+
         <p class="summary">
             Profesional IT dengan pengalaman kerja akumulatif selama 10 tahun yang berfokus pada dua sektor krusial: 3 tahun dalam manajemen infrastruktur kritis di lingkungan Data Center dan 7 tahun mengelola sistem IT serta jaringan multi-cabang di industri FnB/Retail. Ahli dalam menjaga kepatuhan SLA, troubleshooting perangkat keras/lunak, integrasi sistem POS/ERP, serta optimasi backup & recovery data. Saat ini sedang menempuh studi S1 Sistem Informasi untuk menyelaraskan keahlian praktis satu dekade ini dengan tata kelola arsitektur IT strategis.
         </p>
@@ -433,12 +535,10 @@
         </div>
     </section>
 
-    <!-- Bagian Pengalaman Kerja -->
     <section id="experience">
         <h2 class="section-title">Pengalaman Kerja</h2>
         <div class="timeline">
             
-            <!-- Pekerjaan 1 (Data Center) -->
             <div class="timeline-item">
                 <div class="job-title">Technician</div>
                 <div class="company-date">
@@ -454,7 +554,6 @@
                 </ul>
             </div>
 
-            <!-- Pekerjaan 2 (FnB/Retail) -->
             <div class="timeline-item">
                 <div class="job-title">IT & GA Staff</div>
                 <div class="company-date">
@@ -467,7 +566,7 @@
                     <li>Merancang dan mengimplementasikan instalasi sistem IT terintegrasi untuk kebutuhan gerai/toko cabang serta kantor pusat.</li>
                     <li>Menyelesaikan kendala teknis pada perangkat keras (*hardware*) maupun perangkat lunak (*software*) pengguna internal.</li>
                     <li>Mengoordinasikan kebijakan pencadangan (*data backup*) dan menyusun skenario pemulihan (*disaster recovery*) secara berkala.</li>
-                    <li>Menyusun dokumentasi teknis yang komprehensif, standar operasional, serta laporan performa divisi.</li>
+                    <li>Menyusun dokumentasi teknis yang komprehensif, standar operasional (*SOP*), serta laporan performa divisi.</li>
                     <li>Mengelola manajemen siklus aset IT mulai dari analisis kebutuhan, pengadaan (*procurement*), hingga pemeliharaan lisensi.</li>
                     <li>Menangani operasional administratif umum korporat dan kepatuhan perizinan legalitas perangkat lunak.</li>
                 </ul>
@@ -476,7 +575,6 @@
         </div>
     </section>
 
-    <!-- Bagian Keahlian -->
     <section id="skills">
         <h2 class="section-title">Matriks Keahlian</h2>
         <div class="skills-container">
@@ -527,7 +625,6 @@
         </div>
     </section>
 
-    <!-- Bagian Pendidikan & Nilai Profesional -->
     <section id="education">
         <div class="info-grid">
             
@@ -558,15 +655,17 @@
         </div>
     </section>
 
-    <!-- Bagian Kontak -->
     <section id="contact">
         <h2 class="section-title">Hubungi Saya</h2>
         <div class="contact-container">
             <p>Saya siap berkontribusi penuh untuk mengoptimalkan operasional infrastruktur IT dan jaringan di perusahaan Anda. Mari berdiskusi lebih lanjut melalui saluran di bawah ini:</p>
             <div class="contact-details">
-                <a href="mailto:fikrieilhams@gmail.com" class="contact-item">
-                    <span>📨</span> fikrieilhams@gmail.com
-                </a>
+                <!-- Implementasi Satu Klik untuk Menyalin Email -->
+                <div class="contact-item" id="email-card" onclick="copyEmailToClipboard()">
+                    <div class="tooltip-alert" id="copy-tooltip">Tersalin! 📋</div>
+                    <span>📨</span> <span id="email-text">fikrieilhams@gmail.com</span>
+                    <button class="copy-btn" title="Salin Email">📋</button>
+                </div>
                 <a href="https://wa.me/6285811968089" target="_blank" class="contact-item">
                     <span>💬</span> +62 858-1196-8089 (WhatsApp)
                 </a>
@@ -574,10 +673,67 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Fikri Ilhami Syah Putra. Dioptimalkan secara profesional.</p>
     </footer>
 
+    <!-- LOGIK SKRIP JAVASCRIPT FITUR INTERAKTIF -->
+    <script>
+        // Logik Fitur 2: Efek Mengetik Otomatis (Typing Effect)
+        const roles = [
+            "IT Infrastructure & Network Specialist",
+            "Data Center Technician Specialist",
+            "Enterprise Systems Administrator"
+        ];
+        let currentRoleIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("roles-text");
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const delayBetweenRoles = 2000;
+
+        function typeEffect() {
+            const currentRole = roles[currentRoleIndex];
+            
+            if (isDeleting) {
+                targetElement.textContent = currentRole.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                targetElement.textContent = currentRole.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+
+            if (!isDeleting && currentCharIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, delayBetweenRoles);
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? erasingSpeed : typingSpeed);
+            }
+        }
+
+        // Logik Fitur 3: Fungsi Salin Teks ke Clipboard
+        function copyEmailToClipboard() {
+            const emailAddress = document.getElementById("email-text").textContent;
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                const tooltip = document.getElementById("copy-tooltip");
+                tooltip.classList.add("show");
+                setTimeout(() => {
+                    tooltip.classList.remove("show");
+                }, 1500);
+            }).catch(err => {
+                console.error("Gagal menyalin teks: ", err);
+            });
+        }
+
+        // Memulai efek animasi saat halaman web selesai dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeEffect, 500);
+        });
+    </script>
 </body>
 </html>
