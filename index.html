@@ -103,12 +103,678 @@
             border-radius: 2px;
         }
 
-        /* Hero / Home */
         #home {
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-height: 100vh;
+            padding-top: 6.5rem;
+        }
+
+        .hero-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .server-status-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; box-shadow: 0 0 12px #22c55e; }
+            100% { opacity: 0.4; }
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typing-container {
+            font-size: 1.8rem;
+            color: var(--accent-teal);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            height: auto;
+            min-height: 2.7rem;
+        }
+
+        .typed-text {
+            border-right: 3px solid var(--accent-blue);
+            padding-right: 5px;
+            animation: cursor-blink 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes cursor-blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-blue); }
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 2.5rem;
+            text-align: justify;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-teal));
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(45, 212, 191, 0.2);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+        }
+
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--border);
+            padding-left: 2rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2rem - 7px);
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .company-date {
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent-teal);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .job-desc {
+            list-style-type: none;
+        }
+
+        .job-desc li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .job-desc li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .skills-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 30%;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(45, 212, 191, 0.1);
+            color: var(--accent-teal);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .edu-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .edu-school {
+            color: var(--accent-teal);
+            font-size: 0.95rem;
+            margin: 0.2rem 0;
+        }
+
+        .edu-year {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .additional-list {
+            list-style: none;
+        }
+
+        .additional-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .additional-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        .contact-container {
+            background: linear-gradient(135deg, var(--bg-card), #111827);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .contact-container p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 0.8rem 1.4rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-teal);
+            background-color: rgba(45, 212, 191, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 5px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .tooltip-alert {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2dd4bf;
+            color: #0f172a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .tooltip-alert.show {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 5rem;
+        }
+
+        @media (max-width: 1024px) {
+            #home h1 { font-size: 2.8rem; }
+            .typing-container { font-size: 1.4rem; min-height: 2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            #home {
+                padding-top: 5.5rem;
+                min-height: auto;
+            }
+
+            #home h1 { 
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+
+            .typing-container { 
+                font-size: 1rem;
+                min-height: 1.5rem;
+                margin-bottom: 1.5rem;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .summary {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            .company-date { 
+                flex-direction: column; 
+                gap: 0.2rem; 
+            }
+
+            .info-grid { 
+                grid-template-columns: 1fr; 
+            }
+
+            .nav-links { 
+                display: none; 
+            }
+
+            .contact-details { 
+                flex-direction: column; 
+                gap: 1rem;
+            }
+
+            th, td { 
+                padding: 0.8rem; 
+            }
+            th { 
+                width: 100%; 
+                display: block; 
+                border-bottom: none; 
+            }
+            td { 
+                display: block; 
+                padding-top: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">FIKRI ILHAMI</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="hero-header-container">
+            <div class="hero-badge">IT Infrastructure & Enterprise Operations</div>
+            <div class="server-status-card">
+                <span class="status-dot"></span>
+                <span>Portfolio Node Status: <strong>ONLINE</strong> (Uptime 99.9%)</span>
+            </div>
+        </div>
+        <h1>Fikri Ilhami Syah Putra</h1>
+        
+        <div class="typing-container">
+            <span class="typed-text" id="roles-text"></span>
+        </div>
+
+        <p class="summary">
+            Profesional IT dengan pengalaman kerja akumulatif selama 10 tahun yang berfokus pada dua sektor krusial: 3 tahun dalam manajemen infrastruktur kritis di lingkungan Data Center dan 7 tahun mengelola sistem IT serta jaringan multi-cabang di industri FnB/Retail. Ahli dalam menjaga kepatuhan SLA, troubleshooting perangkat keras/lunak, integrasi sistem POS/ERP, serta optimasi backup & recovery data. Saat ini sedang menempuh studi S1 Sistem Informasi untuk menyelaraskan keahlian praktis satu dekade ini dengan tata kelola arsitektur IT strategis.
+        </p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Mulai Kolaborasi 🤝</a>
+            <a href="Fikri_Ilhami_Syah_Putra_CV.pdf" target="_blank" class="btn btn-secondary">Unduh CV Resmi (PDF) 📄</a>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Pengalaman Kerja</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="job-title">Technician</div>
+                <div class="company-date">
+                    <span>PT Sinergi Karsa Handaya Makmur (Byzantine Datacenter)</span>
+                    <span>2023 - Sekarang</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Memastikan seluruh operasional berjalan ketat sesuai dengan regulasi SLA (Service Level Agreement) data center.</li>
+                    <li>Melakukan instalasi fisik, pemeliharaan preventif, dan penanganan kendala krusial (*troubleshooting*) pada infrastruktur inti IT.</li>
+                    <li>Memonitor performa sistem dan lalu lintas jaringan secara berkala guna menjamin stabilitas operasional harian.</li>
+                    <li>Mengelola sistem inventarisasi dan pelacakan aset (*asset tracking*) IT data center secara akurat.</li>
+                    <li>Mengeksekusi mitigasi masalah teknis secara cepat dan responsif demi menekan risiko terjadinya kerugian akibat *downtime*.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="job-title">IT & GA Staff</div>
+                <div class="company-date">
+                    <span>Titian Group</span>
+                    <span>2014 - 2023</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Bertanggung jawab penuh atas pemeliharaan ketersediaan server, perangkat komputer, dan seluruh komponen keras IT perusahaan.</li>
+                    <li>Menganalisis matriks lalu lintas (*traffic*) serta metrik performa jaringan kantor untuk menjaga efisiensi konektivitas.</li>
+                    <li>Merancang dan mengimplementasikan instalasi sistem IT terintegrasi untuk kebutuhan gerai/toko cabang serta kantor pusat.</li>
+                    <li>Menyelesaikan kendala teknis pada perangkat keras (*hardware*) maupun perangkat lunak (*software*) pengguna internal.</li>
+                    <li>Mengoordinasikan kebijakan pencadangan (*data backup*) dan menyusun skenario pemulihan (*disaster recovery*) secara berkala.</li>
+                    <li>Menyusun dokumentasi teknis yang komprehensif, standar operasional (*SOP*), serta laporan performa divisi.</li>
+                    <li>Mengelola manajemen siklus aset IT mulai dari analisis kebutuhan, pengadaan (*procurement*), hingga pemeliharaan lisensi.</li>
+                    <li>Menangani operasional administratif umum korporat dan kepatuhan perizinan legalitas perangkat lunak.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Matriks Keahlian</h2>
+        <div class="skills-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Keahlian Teknis & Kompetensi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Networking & Security</strong></td>
+                        <td>
+                            <div class="skill-tags">
+                                <span class="tag">Mikrotik Configuration</span>
+                                <span class="tag">Network Monitoring</span>
+                                <span class="tag">Active Directory</span>
+                                <span class="tag">CCTV Systems</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Systems & Infrastructure</strong></td>
+                        <td>
+                            <div class="skill-tags">
+                                <span class="tag">IT Support Level 1-3</span>
+                                <span class="tag">Troubleshooting (HW/SW)</span>
+                                <span class="tag">Mail & Hosting Management</span>
+                                <span class="tag">Backup & Disaster Recovery</span>
+                                <span class="tag">Data Center Operations</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enterprise Solutions</strong></td>
+                        <td>
+                            <div class="skill-tags">
+                                <span class="tag">POS (Point of Sale) Systems</span>
+                                <span class="tag">ERP Implementations</span>
+                                <span class="tag">Asset Management</span>
+                                <span class="tag">IT Procurement</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="info-grid">
+            
+            <div class="info-card">
+                <h3>Pendidikan Formal</h3>
+                <div class="edu-item">
+                    <div class="edu-degree">S1 - Sistem Informasi (On Going)</div>
+                    <div class="edu-school">Universitas Terbuka</div>
+                    <div class="edu-year">2024 - Sekarang</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-degree">Teknik Komputer dan Jaringan (TKJ)</div>
+                    <div class="edu-school">SMK 2 Triple J</div>
+                    <div class="edu-year">2011 - 2014</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>Nilai Profesional</h3>
+                <ul class="additional-list">
+                    <li>Komunikasi taktis: Mampu menjembatani kendala teknis menjadi solusi bisnis yang dipahami manajemen.</li>
+                    <li>Kolaborasi adaptif: Berpengalaman kerja secara independen di lingkungan kritis maupun sinergi tim korporasi.</li>
+                    <li>Akselerasi belajar: Tanggap dan cepat menguasai arsitektur sistem baru serta perangkat teknologi terkini.</li>
+                    <li>Kesiapan industri: Memiliki ketahanan kerja teruji dalam atmosfer operasional Data Center 24/7.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <div class="contact-container">
+            <p>Saya siap berkontribusi penuh untuk mengoptimalkan operasional infrastruktur IT dan jaringan di perusahaan Anda. Mari berdiskusi lebih lanjut melalui saluran di bawah ini:</p>
+            <div class="contact-details">
+                <div class="contact-item" id="email-card" onclick="copyEmailToClipboard()">
+                    <div class="tooltip-alert" id="copy-tooltip">Tersalin! 📋</div>
+                    <span>📨</span> <span id="email-text">fikrieilhams@gmail.com</span>
+                    <button class="copy-btn" title="Salin Email">📋</button>
+                </div>
+                <a href="https://wa.me/6285811968089" target="_blank" class="contact-item">
+                    <span>💬</span> +62 858-1196-8089 (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Fikri Ilhami Syah Putra. Dioptimalkan secara profesional.</p>
+    </footer>
+
+    <script>
+        const roles = [
+            "IT Infrastructure & Network Specialist",
+            "Data Center Technician Specialist",
+            "Enterprise Systems Administrator"
+        ];
+        let currentRoleIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("roles-text");
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const delayBetweenRoles = 2000;
+
+        function typeEffect() {
+            const currentRole = roles[currentRoleIndex];
+            
+            if (isDeleting) {
+                targetElement.textContent = currentRole.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                targetElement.textContent = currentRole.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+
+            if (!isDeleting && currentCharIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, delayBetweenRoles);
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? erasingSpeed : typingSpeed);
+            }
+        }
+
+        function copyEmailToClipboard() {
+            const emailAddress = document.getElementById("email-text").textContent;
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                const tooltip = document.getElementById("copy-tooltip");
+                tooltip.classList.add("show");
+                setTimeout(() => {
+                    tooltip.classList.remove("show");
+                }, 1500);
+            }).catch(err => {
+                console.error("Gagal menyalin teks: ", err);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeEffect, 500);
+        });
+    </script>
+</body>
+</html>            min-height: 100vh;
             /* Tambahkan padding-top minimal 80px hingga 90px untuk memberi ruang bagi header */
             padding-top: 6.5rem; 
         }
