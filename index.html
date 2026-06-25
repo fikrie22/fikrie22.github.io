@@ -703,11 +703,16 @@
         <div class="contact-container">
             <p>Saya siap berkontribusi penuh untuk mengoptimalkan operasional infrastruktur IT dan jaringan di perusahaan Anda. Mari berdiskusi lebih lanjut melalui saluran di bawah ini:</p>
             <div class="contact-details">
-                <div class="contact-item" id="email-card" onclick="copyEmailToClipboard()">
+                
+                <!-- Email Terintegrasi: Klik buka aplikasi, Ikon klip untuk salin -->
+                <div class="contact-item" id="email-card">
                     <div class="tooltip-alert" id="copy-tooltip">Tersalin! 📋</div>
-                    <span>📨</span> <span id="email-text">fikrieilhams@gmail.com</span>
-                    <button class="copy-btn" title="Salin Email">📋</button>
+                    <a href="mailto:fikrieilhams@gmail.com" style="display: flex; align-items: center; gap: 0.6rem; width: 100%;">
+                        <span>📨</span> <span id="email-text">fikrieilhams@gmail.com</span>
+                    </a>
+                    <button class="copy-btn" onclick="copyEmailToClipboard(event)" title="Salin Email">📋</button>
                 </div>
+
                 <a href="https://wa.me/6285811968089" target="_blank" class="contact-item">
                     <span>💬</span> +62 858-1196-8089 (WhatsApp)
                 </a>
